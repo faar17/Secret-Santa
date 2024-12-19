@@ -159,39 +159,6 @@ function showQuestion() {
     nextQuestionButton.style.display = "none";
 }
 
-function checkAnswer(selectedIndex) {
-    const currentQuestion = questions[currentQuestionIndex];
-    const feedback = document.getElementById("feedback");
-
-    // Disabilita i bottoni delle opzioni
-    document.querySelectorAll(".button").forEach(button => {
-        button.disabled = true;
-    });
-
-    // Verifica la risposta e mostra il messaggio
-    if (selectedIndex === currentQuestion.correct) {
-        correctAnswers++;
-        feedback.textContent = "Corretto!";
-        feedback.style.color = "green";
-    } else {
-        feedback.textContent = `Sbagliato! La risposta corretta era: ${currentQuestion.options[currentQuestion.correct]}`;
-        feedback.style.color = "red";
-    }
-
-    feedback.style.display = "block"; // Mostra il messaggio
-
-    // Controlla se il giocatore ha raggiunto 12 risposte corrette e non ha ancora deciso
-    if (correctAnswers >= 12 && !askedToContinue) {
-        askedToContinue = true; // Imposta la variabile a true per evitare richieste future
-        const wantsToContinue = confirm("Hai raggiunto 12 risposte corrette! Vuoi continuare?");
-        if (!wantsToContinue) {
-            showResult(); // Mostra il risultato e termina il quiz
-            return; // Esce dalla funzione per evitare di mostrare il pulsante "Prossima domanda"
-        }
-    }
-
-    nextQuestionButton.style.display = "block"; // Mostra il pulsante "Prossima domanda"
-}
 
 
 function showNextQuestion() {
@@ -221,6 +188,8 @@ function restartQuiz() {
     introPage.style.display = "block";
 }
 
+let hasAskedToContinue = false; // Variabile di stato per tenere traccia
+
 function checkAnswer(selectedIndex) {
     const currentQuestion = questions[currentQuestionIndex];
     const feedback = document.getElementById("feedback");
@@ -243,11 +212,11 @@ function checkAnswer(selectedIndex) {
     feedback.style.display = "block"; // Mostra il messaggio
 
     // Controlla se il giocatore ha raggiunto 12 risposte corrette
-    if (correctAnswers >= 12) {
+    if (correctAnswers >= 12 && !hasAskedToContinue) {
+        hasAskedToContinue = true; // Imposta il flag a true
         const wantsToContinue = confirm("Hai raggiunto 12 risposte corrette! Vuoi continuare?");
         if (wantsToContinue) {
             nextQuestionButton.style.display = "block"; // Mostra il pulsante "Prossima domanda"
-            correctAnswers = -12
         } else {
             showResult(); // Mostra il risultato e termina il quiz
         }
@@ -255,6 +224,8 @@ function checkAnswer(selectedIndex) {
         nextQuestionButton.style.display = "block"; // Mostra il pulsante "Prossima domanda"
     }
 }
+
+
 
 function showNextQuestion() {
     // Nascondi il messaggio di feedback prima di passare alla prossima domanda
