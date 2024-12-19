@@ -247,6 +247,7 @@ function checkAnswer(selectedIndex) {
         const wantsToContinue = confirm("Hai raggiunto 12 risposte corrette! Vuoi continuare?");
         if (wantsToContinue) {
             nextQuestionButton.style.display = "block"; // Mostra il pulsante "Prossima domanda"
+            correctAnswers = -12
         } else {
             showResult(); // Mostra il risultato e termina il quiz
         }
