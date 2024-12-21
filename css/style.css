@@ -245,6 +245,7 @@ body {
 #intro-page {
 	text-align: center;
 	padding: 20px;
+	display:none;
 }
 
 #babbo-natale {
@@ -267,6 +268,62 @@ body {
 		width: 120px; /* Una dimensione intermedia per tablet */
 	}
 }
+
+
+#gift-container {
+	margin-top: 100px;
+}
+
+#gift {
+	width: 100px;
+	height: 100px;
+	background-color: red;
+	border: 2px solid gold;
+	display: inline-block;
+	cursor: pointer;
+	position: relative;
+}
+
+	#gift:before, #gift:after {
+		content: '';
+		position: absolute;
+		background-color: gold;
+	}
+
+	#gift:before {
+		width: 10px;
+		height: 100%;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	#gift:after {
+		height: 10px;
+		width: 100%;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+#start-button {
+	display: none;
+	margin-top: 20px;
+	padding: 10px 20px;
+	font-size: 16px;
+	background-color: green;
+	color: white;
+	border: none;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+	#start-button:hover {
+		background-color: darkgreen;
+	}
+
+#highlighted-text {
+	font-size: 1.5em; /* Aumenta leggermente la dimensione per evidenziarlo */
+}
+
 
 
 
