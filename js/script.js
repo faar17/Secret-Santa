@@ -20,14 +20,14 @@ const questions = [
         correct: 0
     },
     {
-        question: "Qual \u00e8 il collegamento tra Babbo Natale e il camino?",
+        question: "In quale paese \u00e8 usanza addobbare l'albero con ragnatele?  ",
         options: [
-            "Santa Claus vive vicino a un camino magico",
-            "\u00c8 stato il modo scelto per consegnare doni a tre ragazze povere",
-            "Rappresenta il calore del Natale",
-            "Simbolizza il passaggio tra i mondi"
+            "Moldavia",
+            "Romania",
+            "Ucraina",
+            "Polonia"
         ],
-        correct: 1
+        correct: 2
     },
     {
         question: "Qual \u00e8 stata la prima canzone cantata nello spazio?",
@@ -52,19 +52,20 @@ const questions = [
     {
         question: "Qual era il materiale usato per creare i primi alberi di Natale artificiali in Germania?",
         options: [
-            "Piume d'oca tinte di verde",
+            
             "Carta pesta",
             "Legno dipinto",
+            "Piume d'oca tinte di verde",
             "Foglie di palma"
         ],
-        correct: 0
+        correct: 2
     },
     {
         question: "Qual \u00e8 il curioso elemento aggiunto nei presepi catalani?",
         options: [
             "Una statuina di un drago",
-            "Un Babbo Natale accucciato",
-            "Una renna parlante",
+            "Un Signore che fa la cacca",
+            "Una renna con il naso rosso",
             "Una fontana di cioccolato"
         ],
         correct: 1
@@ -76,8 +77,8 @@ const questions = [
     },
     {
         question: "Dove lascia Babbo Natale i regali in Francia?",
-        options: ["Sotto il letto", "Nelle scarpe dei bambini", "Sul tavolo della cucina", "Sulle finestre"],
-        correct: 1
+        options: ["Sul tavolo della cucina", "Sotto il letto", "Nelle scarpe dei bambini",  "Sulle finestre"],
+        correct: 2
     },
     {
         question: "Perch\u00e9 a Natale si scambiano i regali?",
@@ -113,7 +114,19 @@ const questions = [
             "Perch\u00e9 il vischio era considerato una pianta sacra nei riti invernali"
         ],
         correct: 1
+    },
+    {
+        question: "Quale di queste non \u00e9 compagna di Rudolf, la renna di babbo natale?",
+        options: [
+            "Ballerina/Dancer",
+            "Fulmine/Dasher",
+            "Cupido/Cupid",
+            "Tormenta/Blizzard"
+
+        ],
+        correct: 3
     }
+    
 ];
 
 
@@ -239,6 +252,26 @@ function showNextQuestion() {
         showResult();
     }
 }
+
+function openGift() {
+    const message = document.getElementById("message");
+    const startButton = document.getElementById("start-button");
+    const gift = document.getElementById("gift");
+
+    message.style.display = "block"; // Mostra il messaggio
+    startButton.style.display = "block"; // Mostra il pulsante per iniziare
+    gift.style.display = "none"; // Nasconde il regalo
+}
+
+function startGame() {
+    const giftContainer = document.getElementById("gift-container");
+    const introPage = document.getElementById("intro-page");
+
+    // Nascondi il regalo e mostra la pagina introduttiva
+    giftContainer.style.display = "none";
+    introPage.style.display = "block";
+}
+
 
 
 
